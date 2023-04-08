@@ -1,5 +1,8 @@
 const indexController = {
-    index : function(req,res){
-        return res.send("register")
+    prueba: function(req,res){
+        res.render('index', {title: 'proyecto'})
+       
     }
 }
+
+module.exports = indexController
