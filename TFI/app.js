@@ -4,16 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var usersRouter = require('./routes/users');
-var registerRouter = require('./routes/register')
-var loginRouter = require('./routes/login')
 var indexRouter = require('./routes/index')
 var productRouter = require('./routes/product')
 var profileRouter = require('./routes/profile')
-var productAddRouter = require('./routes/product-add')
-var headerLogueadoRouter = require('./routes/headerLogueado')
-var profileEditRouter = require('./routes/profile-edit')
-var searchResultRouter = require('./routes/search-result')
 var app = express();
 
 // view engine setup
@@ -28,16 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/index', indexRouter)
-app.use('/users', usersRouter);
-app.use('/register', registerRouter)
-app.use('/login', loginRouter)
 app.use('/product', productRouter)
 app.use('/profile', profileRouter)
-app.use('/product-add', productAddRouter)
-app.use('/headerLogueado', headerLogueadoRouter)
-app.use('/profile-edit', profileEditRouter)
-app.use('/search-result', searchResultRouter)
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

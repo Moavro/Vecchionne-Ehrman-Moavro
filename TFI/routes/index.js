@@ -3,7 +3,8 @@ var router = express.Router();
 const indexController = require('../controllers/indexController')
 
 /* GET home page. */
-router.get('/', indexController.prueba);
+router.get('/', indexController.index);
+router.get('/search-result', indexController.searchResult);
 
 
 

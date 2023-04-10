@@ -1,8 +1,13 @@
 const productController = {
-    prueba: function(req,res){
-        res.render('product', {title: 'proyecto'})
+    product: function(req,res){
+        res.render('product')
+       
+    },
+    productAdd: function(req,res){
+        res.render('product-add')
        
     }
+
 }
 
 module.exports = productController
