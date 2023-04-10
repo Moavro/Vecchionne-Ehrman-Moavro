@@ -2,7 +2,7 @@
 <!-- Include Head -->
 <%- include("./partials/head") %>
 	<!-- Header -->
-	<%- include("./partials/header") %>
+	<%- include("./partials/headerLogueado") %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -13,7 +13,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
-				<form action="product.ejs" method="get">
+				<form action="/product" method="get">
 					<div>
 						<input type="file" name="imagen" value="" placeholder="Imagen" required>
 					</div>
