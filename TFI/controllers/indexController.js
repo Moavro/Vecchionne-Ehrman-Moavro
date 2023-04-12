@@ -4,13 +4,18 @@ const indexController = {
     index: function(req,res){
         res.render('index', {
             usuarios: data.usuario,
-            productos: data.productos
+            productos: data.productos,
+            comentados: [data.productos[0], data.productos[1], data.productos[2] ]
         })
        
        
     },
     searchResult: function(req,res){
-        res.render('search-result')
+        res.render('search-result', {
+            usuarios: data.usuario,
+            productos: data.productos
+
+        })
        
     }
 }

@@ -3,7 +3,7 @@ const data = {
         email: "tufobarra12@gmail.com",
         usuario: "tufi12",
         contraseña:"1234",
-        fechaNacimiento:"01-01-200",
+        fechaNacimiento:"01-01-2000",
         documento:"45487691",
         fotoPerfil:"/images/user/perfil.jfif"
    },
@@ -74,23 +74,23 @@ const data = {
         {
             nombreUsuario:"Chapu_Martinez",
             texto:"Tremendo botin, lo recomiendo!",
-            fotoPerfil:"/images/user/perfil.jfif"
+            fotoPerfil:"/images/users/perfil.jfif"
         },{
             nombreUsuario:"Doman",
             texto:"Malisimo el botin! Muy mala calidad!",
-            fotoPerfil:"/images/user/perfil.jfif"
+            fotoPerfil:"/images/users/perfil.jfif"
         },{
             nombreUsuario:"Fabra",
             texto:"Con esos el diego se gambeteo a los ingleses",
-            fotoPerfil:"/images/user/perfil.jfif"
+            fotoPerfil:"/images/users/perfil.jfif"
         },{
             nombreUsuario:"El_Zorro",
             texto:"Ayer le clave 3 a River con esos",
-            fotoPerfil:"/images/user/perfil.jfif"
+            fotoPerfil:"/images/users/perfil.jfif"
         },{
             nombreUsuario:"Demicheles",
             texto:"Un fuegooo",
-            fotoPerfil:"/images/user/perfil.jfif"
+            fotoPerfil:"/images/users/perfil.jfif"
         }
     ]
 }
