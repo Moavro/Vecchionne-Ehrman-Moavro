@@ -68,7 +68,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: rgb(47, 111, 208);
 }
 
 .main-header_home-link,
@@ -80,6 +80,7 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .search-form {
@@ -125,22 +126,29 @@ hr {
 .main-navbar {
   margin-top: 20px;
   display: none;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+  
 }
+
 
 .left-navbar,
 .right-navbar {
   font-size: 1.5em;
 }
 
+
+
 .logout{
   background: transparent;
   border: 0px;
   cursor: pointer;
   font-size: 1em;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+
 }
 
 .logout:hover{
-  color: #1259c3;
+  color: white;
 }
 
 .left-navbar a,
@@ -166,12 +174,15 @@ hr {
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
+  
+  
 }
 
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
   color: var(--gray);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .product-box {
@@ -180,6 +191,7 @@ hr {
   overflow: hidden;
   transition: 300ms;
   margin: 20px 0;
+  
 }
 
 .product-box a {
@@ -508,7 +520,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: white;
   }
 
   .left-navbar li {
