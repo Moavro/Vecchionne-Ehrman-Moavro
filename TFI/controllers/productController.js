@@ -12,7 +12,7 @@ const productController = {
     productAdd: function(req,res){
         res.render('product-add')
        
-    }
+    } 
 
 }
 
