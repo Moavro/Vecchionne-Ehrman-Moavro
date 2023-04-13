@@ -1,6 +1,6 @@
 const data = require("../db/data");
 const profileController = {
-    profile: function(req,res){
+    show: function(req,res){
         res.render('profile', {
             email: data.usuario.email,
             usuario: data.usuario.usuario,
