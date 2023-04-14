@@ -3,7 +3,7 @@ const profileController = {
     show: function(req,res){
         return res.render('profile', {
             email: data.usuario.email,
-            usuario: data.usuario.usuario,
+            usuario: data.usuario,
             fotoPerfil: data.usuario.fotoPerfil,
             documento: data.usuario.documento,
             fechaNacimiento: data.usuario.fechaNacimiento,
