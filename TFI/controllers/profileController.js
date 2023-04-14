@@ -1,7 +1,7 @@
 const data = require("../db/data");
 const profileController = {
     show: function(req,res){
-        res.render('profile', {
+        return res.render('profile', {
             email: data.usuario.email,
             usuario: data.usuario.usuario,
             fotoPerfil: data.usuario.fotoPerfil,
@@ -14,17 +14,17 @@ const profileController = {
        
     },
     register: function(req,res){
-        res.render('register')
+        return res.render('register')
        
     },
     profileEdit: function(req,res){
-        res.render('profile-edit',{
+        return res.render('profile-edit',{
             usuario: data.usuario
         })
        
     },
     login: function(req,res){
-        res.render('login')
+        return res.render('login')
        
     }
 }

@@ -2,7 +2,7 @@ const data = require('../db/data')
 
 const productController = {
     show: function(req,res){
-        res.render('product', {
+        return res.render('product', {
             productos: data.productos,
             comentarios: data.comentarios,
             id: req.params.id
@@ -10,7 +10,7 @@ const productController = {
        
     },
     productAdd: function(req,res){
-        res.render('product-add', {
+        return res.render('product-add', {
             usuario: data.usuario
         })
        

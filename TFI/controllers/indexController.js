@@ -2,7 +2,7 @@ const data= require('../db/data')
 
 const indexController = {
     index: function(req,res){
-        res.render('index', {
+        return res.render('index', {
             usuarios: data.usuario,
             productos: data.productos,
             comentados: [data.productos[0], data.productos[1], data.productos[2] ]
@@ -10,13 +10,13 @@ const indexController = {
     },
 
     headerLogueado: function(req,res){
-        res.render("headerLogueado", {
+        return res.render("headerLogueado", {
             usuario: data.usuario
         })
     },
 
     searchResult: function(req,res){
-        res.render('search-result', {
+        return res.render('search-result', {
             usuarios: data.usuario,
             productos: data.productos
         })
