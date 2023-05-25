@@ -36,6 +36,19 @@ module.exports = function (sequelize, DataTypes){
     };
 
     const Usuario = sequelize.define(alias, cols, config);
+    // un usuario tiene muchos productos cargados
+    //un usuario tiene muchos comentarios
+    Usuario.associate = function(models){
+        Usuario.hasMany(models.Producto,{
+            as: "productos",
+            foreignKey: "usuario_id"
+        }),
+        Usuario.hasMany(models.Comentario, {
+            as: "comentarios",
+            foreignKey:"usuario_id"
+        })
+
+    }
 
     return Usuario;
 
