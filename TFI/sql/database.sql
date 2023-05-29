@@ -6,7 +6,7 @@ create table usuarios (
 id int unsigned primary key auto_increment,
 email varchar(100) not null,
 usuario varchar(100) not null,
-clave varchar(100) not null, 
+clave varchar(300) not null, 
 foto_perfil varchar(100) null,
 fecha_nacimiento date,
 dni int not null,
@@ -45,11 +45,11 @@ updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 );
 
-insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimiento, dni) values(default, "tufobarra12@gmail.com", "tufobarra12", "1234", "/images/user/perfil.jfif", "2000-09-04","45487253");
-insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimiento, dni) values(default, "tufito13@gmail.com", "tufito13", "2234", "/images/user/perfil.jfif", "2001-08-07","45487100");
-insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimiento, dni) values(default, "tufarini14@gmail.com", "tufarini14", "3234", "/images/user/perfil.jfif", "2002-07-02","45487960");
-insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimiento, dni) values(default, "tufan15@gmail.com", "tufan15", "4234", "/images/user/perfil.jfif", "2003-03-06","45487980");
-insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimiento, dni) values(default, "tufarina16@gmail.com", "tufarina16", "5234", "/images/user/perfil.jfif", "2004-05-04","45487483");
+insert into usuarios(id, email, usuario, clave, foto_perfil, fecha_nacimiento, dni) values(default, "tufobarra12@gmail.com", "tufobarra12", "1234", "/images/user/perfil.jfif", "2000-09-04","45487253");
+insert into usuarios(id, email, usuario, clave, foto_perfil, fecha_nacimiento, dni) values(default, "tufito13@gmail.com", "tufito13", "2234", "/images/user/perfil.jfif", "2001-08-07","45487100");
+insert into usuarios(id, email, usuario, clave, foto_perfil, fecha_nacimiento, dni) values(default, "tufarini14@gmail.com", "tufarini14", "3234", "/images/user/perfil.jfif", "2002-07-02","45487960");
+insert into usuarios(id, email, usuario, clave, foto_perfil, fecha_nacimiento, dni) values(default, "tufan15@gmail.com", "tufan15", "4234", "/images/user/perfil.jfif", "2003-03-06","45487980");
+insert into usuarios(id, email, usuario, clave, foto_perfil, fecha_nacimiento, dni) values(default, "tufarina16@gmail.com", "tufarina16", "5234", "/images/user/perfil.jfif", "2004-05-04","45487483");
 
 insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 1, "Nike Phantom", "Botines que te ayudan a encontrar el toque perfecto","/images/products/timbos1.webp", "2020-01-01");
 insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 2, "Nike Vapor", "Domina el balon con estos botines Adidas de corte bajo","/images/products/timbos1.webp", "2020-01-01");
