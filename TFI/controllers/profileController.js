@@ -1,4 +1,5 @@
-const data = require("../db/data");
+const db = require("../database/models");
+
 const profileController = {
     show: function(req,res){
         return res.render('profile', {
@@ -15,6 +16,25 @@ const profileController = {
     },
     register: function(req,res){
         return res.render('register')
+       
+    },
+    store: function(req,res){
+        let data = req.body
+
+        let datosUsuario= {
+            mail: data.mail,
+            usuario: data.usuario,
+            password: data.password,
+            nacimiento: data.nacimiento,
+            documento: data.documento
+        }
+       
+        db.Usuario.create(datosUsuario)
+        .then((result) => {
+            return res.redirect("/profile/login")
+        }).catch((err) => {
+            console.log(err);
+        });
        
     },
     profileEdit: function(req,res){

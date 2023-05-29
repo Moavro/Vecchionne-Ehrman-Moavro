@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes){
+module.exports = function (sequelize, dataTypes){
 
     let alias = "Producto";
 
@@ -9,19 +9,19 @@ module.exports = function (sequelize, DataTypes){
             type: dataTypes.INTEGER,
         },
         usuario_id: {
-            type: DataTypes.INTEGER,
+            type: dataTypes.INTEGER,
         },
         nombre: {
-            type: DataTypes.STRING(100),
+            type: dataTypes.STRING(100),
         },
         descripcion: {
-            type: DataTypes.STRING(500),
+            type: dataTypes.STRING(500),
         },
         foto_producto: {
-            type: DataTypes.STRING(100),
+            type: dataTypes.STRING(100),
         },
         fecha_carga: {
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         }
 
     }

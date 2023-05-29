@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes){
+module.exports = function (sequelize, dataTypes){
 
     let alias = "Comentario";
 
@@ -9,13 +9,13 @@ module.exports = function (sequelize, DataTypes){
             type: dataTypes.INTEGER,
         },
         usuario_id: {
-            type: DataTypes.INTEGER,
+            type: dataTypes.INTEGER,
         },
         producto_id: {
-            type: DataTypes.INTEGER,
+            type: dataTypes.INTEGER,
         },
         comentario: {
-            type: DataTypes.STRING(500),
+            type: dataTypes.STRING(500),
         }
 
     }
@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes){
         // un comentario pertenece a un usuario
 
     Comentario.associate = function(models){
-        Comentario.belongsTo(models.producto,{
+        Comentario.belongsTo(models.Producto,{
             as: "producto",
             foreignKey: "producto_id"
         }),
