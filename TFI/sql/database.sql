@@ -6,13 +6,13 @@ create table usuarios (
 id int unsigned primary key auto_increment,
 email varchar(100) not null,
 usuario varchar(100) not null,
-contraseña varchar(100) not null, 
+clave varchar(100) not null, 
 foto_perfil varchar(100) null,
 fecha_nacimiento date,
 dni int not null,
 
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 );
 
@@ -21,12 +21,13 @@ id int unsigned primary key auto_increment,
 usuario_id int unsigned,
 nombre varchar(100) not null, 
 descripcion varchar(500) not null, 
+foto_producto varchar(100) not null,
 fecha_carga date,
 
 foreign key (usuario_id) references usuarios(id),
 
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 );
 
@@ -34,13 +35,13 @@ create table comentarios(
 id int unsigned primary key auto_increment,
 usuario_id int unsigned, 
 producto_id int unsigned,
-comentario varchar(300) not null,
+comentario varchar(500) not null,
 
 foreign key(usuario_id) references usuarios(id),
 foreign key(producto_id) references productos(id),
 
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 );
 
@@ -50,16 +51,16 @@ insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimie
 insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimiento, dni) values(default, "tufan15@gmail.com", "tufan15", "4234", "/images/user/perfil.jfif", "2003-03-06","45487980");
 insert into usuarios(id, email, usuario, contraseña, foto_perfil, fecha_nacimiento, dni) values(default, "tufarina16@gmail.com", "tufarina16", "5234", "/images/user/perfil.jfif", "2004-05-04","45487483");
 
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 1, "Nike Phantom", "Botines que te ayudan a encontrar el toque perfecto", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 2, "Nike Vapor", "Domina el balon con estos botines Adidas de corte bajo", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 3, "Adidas Predator Edge", "Domina el balon con estos botines Adidas sin cordones", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 4, "Adidas Goleto VIII", "Botines para pasto sintetico hechos parcialmente con contenido reciclado", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 5, "Adidas Speedportal", "Botines para terreno blando que te ayudan a controlar cada parte de tu juego", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 4, "Adidas Nemeziz", "Controla cada jugada con estos botines Adidas", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 3, "New Balance Furon", "Logra tu mejor jugada conn estos botines hechos en parte con materiales reciclados", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 2, "New Balance Tekela", "Botines veloces inspirados en Messi hechos parcialmente con materiales reciclados", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 1, "New Balance Furon V7", "Domina los partidos sobre terreno firme con estos botines lleno de colores", "2020-01-01");
-insert into productos(id, usuario_id, nombre, descripcion, fecha_carga) values(default, 5, "Adidas Copa Pure", "Mejora tu juego con los suaves botines sinteticos de Adidas x Classic Lego", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 1, "Nike Phantom", "Botines que te ayudan a encontrar el toque perfecto","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 2, "Nike Vapor", "Domina el balon con estos botines Adidas de corte bajo","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 3, "Adidas Predator Edge", "Domina el balon con estos botines Adidas sin cordones","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 4, "Adidas Goleto VIII", "Botines para pasto sintetico hechos parcialmente con contenido reciclado","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 5, "Adidas Speedportal", "Botines para terreno blando que te ayudan a controlar cada parte de tu juego","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 4, "Adidas Nemeziz", "Controla cada jugada con estos botines Adidas","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 3, "New Balance Furon", "Logra tu mejor jugada conn estos botines hechos en parte con materiales reciclados","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 2, "New Balance Tekela", "Botines veloces inspirados en Messi hechos parcialmente con materiales reciclados","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 1, "New Balance Furon V7", "Domina los partidos sobre terreno firme con estos botines lleno de colores","/images/products/timbos1.webp", "2020-01-01");
+insert into productos(id, usuario_id, nombre, descripcion, foto_producto, fecha_carga) values(default, 5, "Adidas Copa Pure", "Mejora tu juego con los suaves botines sinteticos de Adidas x Classic Lego","/images/products/timbos1.webp", "2020-01-01");
 
 insert into comentarios(id, usuario_id, producto_id, comentario) values (default, 1, 1, "Estoy muy contento con mi nueva compra de botines de fútbol.");
 insert into comentarios(id, usuario_id, producto_id, comentario) values (default, 2, 1, "Estoy muy impresionado con estos botines Nike. Son muy cómodos y se ajustan bien a mis pies.");
