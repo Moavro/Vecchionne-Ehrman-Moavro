@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const bcrypt = require('bcryptjs');
 
 const profileController = {
     show: function(req,res){
@@ -19,17 +20,10 @@ const profileController = {
        
     },
     store: function(req,res){
-        let data = req.body
-
-        let datosUsuario= {
-            mail: data.mail,
-            usuario: data.usuario,
-            password: data.password,
-            nacimiento: data.nacimiento,
-            documento: data.documento
-        }
-       
-        db.Usuario.create(datosUsuario)
+        let data = req.body 
+        data.clave = bcrypt.hashSync(data.clave, 10)
+        
+        db.Usuario.create(data)
         .then((result) => {
             return res.redirect("/profile/login")
         }).catch((err) => {

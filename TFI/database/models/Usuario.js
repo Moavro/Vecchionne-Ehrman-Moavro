@@ -1,10 +1,10 @@
-module.exports = function (sequelize, dataTypes){
+module.exports = function (sequelize, dataTypes) {
 
     let alias = "Usuario"
 
     let cols = {
         id: {
-            autoincrement: true,
+            autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
@@ -14,7 +14,7 @@ module.exports = function (sequelize, dataTypes){
         usuario: {
             type: dataTypes.STRING(100),
         },
-        contraseña: {
+        clave: {
             type: dataTypes.STRING(100),
         },
         foto_perfil: {
@@ -36,23 +36,23 @@ module.exports = function (sequelize, dataTypes){
     }
 
     let config = {
-        tableName : "usuarios",
-        timestamps:true,
+        tableName: "usuarios",
+        timestamps: true,
         underscored: true,
     };
 
     const Usuario = sequelize.define(alias, cols, config);
     // un usuario tiene muchos productos cargados
     //un usuario tiene muchos comentarios
-    Usuario.associate = function(models){
-        Usuario.hasMany(models.Producto,{
+    Usuario.associate = function (models) {
+        Usuario.hasMany(models.Producto, {
             as: "productos",
             foreignKey: "usuario_id"
         }),
-        Usuario.hasMany(models.Comentario, {
-            as: "comentarios",
-            foreignKey:"usuario_id"
-        })
+            Usuario.hasMany(models.Comentario, {
+                as: "comentarios",
+                foreignKey: "usuario_id"
+            })
 
     }
 
