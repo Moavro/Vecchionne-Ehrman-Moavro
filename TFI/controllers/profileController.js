@@ -40,6 +40,34 @@ const profileController = {
     login: function(req,res){
         return res.render('login')
        
+    },
+    storeLogin: function(req,res){
+        let emailInsertado = req.body.email
+        let claveInsertada = req.body.clave
+
+        let filtrado = {
+            where: [{email: emailInsertado}]
+        } 
+
+        db.Usuariogit .findOne(filtrado)
+        .then((result) => {
+            if (result != null) {
+                let claveCorrecta = bcrypt.compareSync(claveInsertada, result.clave)
+                if(claveCorrecta){
+                    return res.redirect("/profile/login")
+                } else {
+                    return res.send('La clave es incorrecta')
+                }
+                
+            } else {
+                return res.send('no kumpi, el mail no existe')
+            }
+            
+        }).catch((err) => {
+            console.log(err);
+            
+        });
+        
     }
 }
 
