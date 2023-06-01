@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const profile = db.Usuario;
 const bcrypt = require('bcryptjs');
 
 const profileController = {

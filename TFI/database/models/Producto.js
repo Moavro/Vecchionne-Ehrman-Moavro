@@ -22,6 +22,12 @@ module.exports = function (sequelize, dataTypes){
         },
         fecha_carga: {
             type: dataTypes.DATE,
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
 
     }
@@ -34,6 +40,7 @@ module.exports = function (sequelize, dataTypes){
 
     const Producto = sequelize.define(alias, cols, config);
 
+// Relaciones
     Producto.associate = function(models) {
         Producto.belongsTo(models.Usuario, {
             as : "usuario",

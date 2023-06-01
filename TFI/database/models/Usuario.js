@@ -15,7 +15,7 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING(100),
         },
         clave: {
-            type: dataTypes.STRING(100),
+            type: dataTypes.STRING(300),
         },
         foto_perfil: {
             type: dataTypes.STRING(100),
@@ -42,6 +42,8 @@ module.exports = function (sequelize, dataTypes) {
     };
 
     const Usuario = sequelize.define(alias, cols, config);
+    
+// Relaciones
     // un usuario tiene muchos productos cargados
     //un usuario tiene muchos comentarios
     Usuario.associate = function (models) {

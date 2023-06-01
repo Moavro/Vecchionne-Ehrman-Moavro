@@ -16,6 +16,12 @@ module.exports = function (sequelize, dataTypes){
         },
         comentario: {
             type: dataTypes.STRING(500),
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
 
     }
@@ -27,9 +33,10 @@ module.exports = function (sequelize, dataTypes){
     };
 
     const Comentario = sequelize.define(alias, cols, config);
-        //un comentario pertenece a un producto 
-        // un comentario pertenece a un usuario
-
+        
+// Relaciones
+    //un comentario pertenece a un producto   
+    // un comentario pertenece a un usuario
     Comentario.associate = function(models){
         Comentario.belongsTo(models.Producto,{
             as: "producto",

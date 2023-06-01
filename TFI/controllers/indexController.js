@@ -1,4 +1,5 @@
 const data= require('../db/data')
+const db = require("../database/models");
 
 const indexController = {
     index: function(req,res){
