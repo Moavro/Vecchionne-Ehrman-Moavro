@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const data = require("../db/data")
 const profile = db.Usuario;
 const bcrypt = require('bcryptjs');
 
@@ -67,7 +68,7 @@ const profileController = {
             where: [{email: emailInsertado}]
         } 
 
-        db.Usuariogit .findOne(filtrado)
+        db.Usuario.findOne(filtrado)
         .then((result) => {
             if (result != null) {
                 let claveCorrecta = bcrypt.compareSync(claveInsertada, result.clave)
