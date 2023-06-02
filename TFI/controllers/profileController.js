@@ -22,14 +22,31 @@ const profileController = {
     },
     store: function(req,res){
         let data = req.body 
-        data.clave = bcrypt.hashSync(data.clave, 10)
+        errors = {};
         
-        db.Usuario.create(data)
-        .then((result) => {
-            return res.redirect("/profile/login")
-        }).catch((err) => {
-            console.log(err);
-        });
+        if(data.email == ""){
+            errors.mensaje = 'Debes ingresar tu email'
+            res.locals.errors = errors
+            return res.render('register')
+        } else if(data.clave == ''){
+            errors.mensaje = 'Ingresa una contraseña'
+            res.locals.error = error
+            return res.render('register')
+        } else if(data.clave.length < 3){
+            errors.mensaje = "La contraseña debe tener 3 o mas caracteres"
+            res.locals.errors = errors
+            return res.render('register')
+        } else {
+            data.clave = bcrypt.hashSync(data.clave, 10)
+            db.Usuario.create(data)
+            .then((result) => {
+                return res.redirect("/profile/login")
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+        
+       
        
     },
     profileEdit: function(req,res){

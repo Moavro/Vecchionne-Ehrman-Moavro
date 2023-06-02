@@ -11,7 +11,7 @@
 		<% if (productos[i].id == id) { %>
 			<div class="container products-wrapper">
 				<div class="d-flex align-items-center">
-					<h2 class="products-title"><%= productos[i].nombreProducto %></h2> 
+					<h2 class="products-title"><%= productos[i].nombre %></h2> 
 					<p class="product-detail-description">
 						<a href="/product/product-add">Editar</a>
 					</p>
@@ -19,10 +19,10 @@
 				<div class="product-detail">
 					<div class="row">
 						<article class="col-12 col-lg-8 product-detail-info">
-							<img src="/<%= productos[i].imagen %>" alt="" class="product-detail-img">
+							<img src="<%= productos[i].foto_producto %>" alt="" class="product-detail-img">
 							<p class="product-detail-description"><%= productos[i].descripcion %></p>
 						</article>
-						<div class="col-12 col-lg-4">
+						<div class="col-12 col-lg-4"> 
 							<% for( let i = 0; i < comentarios.length; i++ ) { %>
 								<section class="comments">
 									<article>
