@@ -5,8 +5,16 @@ const producto = db.Producto;
 const productController = {
     show: function(req,res){
         let idBuscado = req.params.id;
-        producto.findByPk(idBuscado)
+
+        let relacion = {
+            include: [
+                 {association: "comentarios",include: [{association: "usuario"}]}
+            ]
+        }
+
+        producto.findByPk(idBuscado, relacion)
             .then((result) => {
+                console.log(result);
                 return res.render('product', {productos: result})
             }).catch((err) => {
                 console.log(err)
