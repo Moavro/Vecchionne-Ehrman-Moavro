@@ -15,14 +15,19 @@
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
 				<form action="/profile/register" method="POST">
+					<% if (locals.errors) { %>
+					 <p> <%= errors.mensaje %></p>
+
+					<% } %> 
+					 
 					<div>
-						<input type="email" name="email" value="" placeholder="Email" required>
+						<input type="email" name="email" value="" placeholder="Email" >
 					</div>
 					<div>
 						<input type="text" name="usuario" value="" placeholder="Usuario" required>
 					</div>
 					<div>
-						<input type="password" name="clave" value="" placeholder="Contrseña" required>
+						<input type="password" name="clave" value="" placeholder="Contrseña" >
 					</div>
 					<div>
 						<input type="date" name="fecha_nacimiento" value="" placeholder="Fecha de nacimiento" required>

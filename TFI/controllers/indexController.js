@@ -25,14 +25,18 @@ const indexController = {
     },
 
     searchResult: function(req,res){
-        let queryString = req.query.search
+        let queryString = req.query.search;
 
-        db.Producto.findAll({
-            where:[{title: {[op.like]:`%${queryString}$%`}}], order: [["fecha_carga", "DESC"]]
-        }) 
+        let filtro = {
+            where:[{nombre: {[op.like]:`%${queryString}%`}}], 
+            order: [["fecha_carga", "DESC"]]
+        }
+
+
+        db.Producto.findAll(filtro) 
         .then((result) => {
             return res.render('search-result', {productos: result })
-        }).catch((err) => {
+         }).catch((err) => {
             
         });
 

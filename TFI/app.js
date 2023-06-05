@@ -22,6 +22,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Configurando Session
+app.use(session({secret: "cuazzi", resave: false, saveUninitialized: true}));
+
+// Configuracion de Locals
+app.use(function (req, res, next) {
+  if(req.session.user != undefined){
+    res.locals.user = req.session.user;
+
+    return next()
+  }
+  return next()
+})
+
 app.use('/', indexRouter);
 app.use('/index', indexRouter)
 app.use('/product', productRouter)
@@ -43,17 +56,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// Configurando Session
-app.use(session({secret: "cuazzi", resave: false, saveUninitialized: true}));
 
-// Configuracion de Locals
-app.use(function (req, res, next) {
-  if(req.session.user.user != undefined){
-    res.locals.user = req.session.user;
-
-    return next()
-  }
-  return next()
-})
 
 module.exports = app;

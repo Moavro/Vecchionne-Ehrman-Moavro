@@ -24,29 +24,42 @@ const profileController = {
     store: function(req,res){
         let data = req.body 
         errors = {};
-        
-        if(data.email == ""){
-            errors.mensaje = 'Debes ingresar tu email'
-            res.locals.errors = errors
-            return res.render('register')
-        } else if(data.clave == ''){
-            errors.mensaje = 'Ingresa una contraseña'
-            res.locals.error = error
-            return res.render('register')
-        } else if(data.clave.length < 3){
-            errors.mensaje = "La contraseña debe tener 3 o mas caracteres"
-            res.locals.errors = errors
-            return res.render('register')
-        } else {
-            data.clave = bcrypt.hashSync(data.clave, 10)
-            db.Usuario.create(data)
-            .then((result) => {
-                return res.redirect("/profile/login")
-            }).catch((err) => {
-                console.log(err);
-            });
-        }
-        
+
+        db.Usuario.findOne({
+            where: [{email:data.email}]
+
+        }).then((result) => {
+            if(data.email == ""){
+                errors.mensaje = 'Debes ingresar tu email'
+                res.locals.errors = errors
+                return res.render('register')
+            } else if (result != null){
+                errors.mensaje = "el mail ingresado ya existe"
+                res.locals.errors= errors
+                return res.render("register")
+            } else if(data.clave == ""){
+                errors.mensaje = 'Ingresa una contraseña'
+                res.locals.errors = errors
+                return res.render('register')
+            } else if(data.clave.length < 3){
+                errors.mensaje = "La contraseña debe tener 3 o mas caracteres"
+                res.locals.errors = errors
+                return res.render('register')
+            } else {
+                data.clave = bcrypt.hashSync(data.clave, 10)
+                db.Usuario.create(data)
+                .then((result) => {
+                    return res.redirect("/profile/login")
+                }).catch((err) => {
+                    console.log(err);
+                });
+            }
+            
+        }).catch((err) => {
+            console.log(err);
+            
+        });
+
        
        
     },
@@ -65,8 +78,11 @@ const profileController = {
         let claveInsertada = req.body.clave
 
         let filtrado = {
-            where: [{email: emailInsertado}]
+            where: [{email: emailInsertado}/* ,
+            {clave:claveInsertada} */]
         } 
+
+        errors = {}
 
         db.Usuario.findOne(filtrado)
         .then((result) => {
@@ -74,13 +90,16 @@ const profileController = {
                 let claveCorrecta = bcrypt.compareSync(claveInsertada, result.clave)
                 if(claveCorrecta){
                     req.session.user = result.dataValues
-                    return res.redirect("/profile/login")
+                    return res.redirect("/profile")
                 } else {
-                    return res.send('La clave es incorrecta')
-                }
-                
+                    errors.mensaje = "la contraseña es incorrecta"
+                    res.locals.errors = errors
+                    return res.render('login')
+                }     
             } else {
-                return res.send('no kumpi, el mail no existe')
+                errors.mensaje = "el mail no existe kumpi"
+                res.locals.errors = errors
+                return res.render('login')
             }
             
         }).catch((err) => {
