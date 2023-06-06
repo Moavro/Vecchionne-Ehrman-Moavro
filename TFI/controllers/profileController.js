@@ -90,6 +90,7 @@ const profileController = {
                 let claveCorrecta = bcrypt.compareSync(claveInsertada, result.clave)
                 if(claveCorrecta){
                     req.session.user = result.dataValues
+                    console.log(req.session.user);
                     return res.redirect("/profile")
                 } else {
                     errors.mensaje = "la contraseña es incorrecta"
