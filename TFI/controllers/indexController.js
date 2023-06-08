@@ -29,14 +29,28 @@ const indexController = {
         console.log(queryString);
 
         let filtro = {
-            where:[{nombre: {[op.like]:`%${queryString}%`}}],
-            //where: {[Op.or]: [{ nombre: { [Op.like]: `%${queryString}%` } },{ descripcion: { [Op.like]: `%${queryString}%` } }],
+            //where:[{nombre: {[op.like]:`%${queryString}%`}}],
+            where: {
+                [op.or]: [
+                  { nombre: { [op.like]: `%${queryString}%` } },
+                  { descripcion: { [op.like]: `%${queryString}%` } }
+                ]
+              },
             order: [["fecha_carga", "DESC"]]
         }
 
 
         db.Producto.findAll(filtro) 
         .then((result) => {
+            
+            // console.log(result);
+            // if(result != ''){
+            //     let mensaje = 'Aqui estan los resultados de su busqueda'
+            //     return res.render('search-result', [{productos: result }, mensaje])
+            // } else {
+            //     let mensaje = 'No hay resultados para su busqueda'
+            //     return res.render('search-result', [{productos: result }, mensaje])
+            // }
             return res.render('search-result', {productos: result })
          }).catch((err) => {
             
