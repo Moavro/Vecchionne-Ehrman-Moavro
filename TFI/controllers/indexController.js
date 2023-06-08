@@ -20,15 +20,17 @@ const indexController = {
 
     headerLogueado: function(req,res){
         return res.render("headerLogueado", {
-            usuario: data.usuario
+            
         })
     },
 
     searchResult: function(req,res){
         let queryString = req.query.search;
+        console.log(queryString);
 
         let filtro = {
-            where:[{nombre: {[op.like]:`%${queryString}%`}}], 
+            where:[{nombre: {[op.like]:`%${queryString}%`}}],
+            //where: {[Op.or]: [{ nombre: { [Op.like]: `%${queryString}%` } },{ descripcion: { [Op.like]: `%${queryString}%` } }],
             order: [["fecha_carga", "DESC"]]
         }
 
@@ -39,6 +41,7 @@ const indexController = {
          }).catch((err) => {
             
         });
+        
 
     }
 }

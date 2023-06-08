@@ -76,6 +76,7 @@ const profileController = {
     storeLogin: function(req,res){
         let emailInsertado = req.body.email
         let claveInsertada = req.body.clave
+        console.log(req.body);
 
         let filtrado = {
             where: [{email: emailInsertado}/* ,
@@ -90,7 +91,10 @@ const profileController = {
                 let claveCorrecta = bcrypt.compareSync(claveInsertada, result.clave)
                 if(claveCorrecta){
                     req.session.user = result.dataValues
-                    console.log(req.session.user);
+                    if(req.body.recordarme != null){
+                        res.cookie('id', result.dataValues.id, {maxAge: 1000*60*60})
+                    }
+                    //console.log(req.session.user);
                     return res.redirect("/profile")
                 } else {
                     errors.mensaje = "la contraseña es incorrecta"
