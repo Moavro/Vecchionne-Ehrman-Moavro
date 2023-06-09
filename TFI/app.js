@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
+const db= require("./database/models")
 
 var indexRouter = require('./routes/index')
 var productRouter = require('./routes/product')
@@ -34,6 +35,26 @@ app.use(function (req, res, next) {
   }
   return next()
 })
+
+ // Configuracion cookie
+app.use(function(req, res, next){
+  if (req.cookies.id != undefined && req.session.user == undefined) { // Si hay cookie y ademas el usuario no esta en session
+    let idCookie = req.cookies.id
+
+    db.Usuario.findByPk(idCookie)
+    .then((result) => {
+      req.session.user = result.dataValues;
+      res.locals.user = result.dataValues
+      return next();
+    }).catch((err) => {
+      console.log(err);
+    });
+  } else {
+    return next();
+  }
+  
+})
+
 
 app.use('/', indexRouter);
 app.use('/index', indexRouter)

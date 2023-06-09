@@ -5,12 +5,14 @@ const profileController= require('../controllers/profileController')
 router.get('/', profileController.show);
 
 router.get("/register", profileController.register);
-
 router.post("/register", profileController.store);
 
-router.get("/profile-edit", profileController.profileEdit)
 router.get("/login", profileController.login)
 router.post("/login", profileController.storeLogin)
+
+router.get("/profile-edit", profileController.profileEdit)
+
+router.get("/logout", profileController.logout)
 
 
 

@@ -91,7 +91,7 @@ const profileController = {
                 let claveCorrecta = bcrypt.compareSync(claveInsertada, result.clave)
                 if(claveCorrecta){
                     req.session.user = result.dataValues
-                    if(req.body.recordarme != null){
+                    if(req.body.recordarme != undefined){
                         res.cookie('id', result.dataValues.id, {maxAge: 1000*60*60})
                     }
                     //console.log(req.session.user);
@@ -112,7 +112,13 @@ const profileController = {
             
         });
         
-    }
+    },
+    logout: function(req,res){
+        res.clearCookie("id");
+        return res.render('login');
+       
+    },
+    
 }
 
 module.exports = profileController

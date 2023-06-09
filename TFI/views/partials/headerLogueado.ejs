@@ -35,7 +35,7 @@
 	
 				<ul class="right-navbar">
 					<li><a href="/profile">
-						<p>Bienvenido</p><%= locals.user.usuario %> <i class="fas fa-user"></i>
+						<%= locals.user.usuario %> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>
@@ -55,6 +55,9 @@
 				</ul>
 			</nav>
 		</div>
+		<% if (locals.user != null) { %>
+			<strong>Bienvenido <%= locals.user.usuario %> :) </strong> 
+		<% } %>
 	</header>
 	<!-- /Header -->
 	
