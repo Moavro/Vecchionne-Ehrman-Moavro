@@ -49,11 +49,11 @@ const indexController = {
              if(result != ''){
                  let mensaje = 'Aqui estan los resultados de su busqueda'
                  dic.mensaje = mensaje
-             return res.render('search-result', [/* {productos: result }, mensaje */dic])
+             return res.render('search-result', [dic])
              } else {
                  let mensaje = 'No hay resultados para su busqueda'
                  dic.mensaje = mensaje
-                 return res.render('search-result', [/* {productos: result }, mensaje */dic])
+                 return res.render('search-result', [dic])
              }
             /* return res.render('search-result', {productos: result }) */
          }).catch((err) => {

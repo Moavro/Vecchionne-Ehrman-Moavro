@@ -28,6 +28,11 @@ const productController = {
         } ) */
        
     productAdd: function(req,res){
+/*                 if (req.session.user != undefined){
+            return res.redirect("/index");
+         } else {
+            return res.render("login")
+         }  */
         return res.render('product-add', {
             usuario: data.usuario
         })

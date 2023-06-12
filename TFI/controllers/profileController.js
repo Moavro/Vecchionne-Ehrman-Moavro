@@ -18,8 +18,11 @@ const profileController = {
        
     },
     register: function(req,res){
-        return res.render('register')
-       
+        if (req.session.user != undefined){
+            return res.redirect("/index");
+         } else {
+            return res.render("register")
+         } 
     },
     store: function(req,res){
         let data = req.body 
@@ -70,8 +73,11 @@ const profileController = {
        
     },
     login: function(req,res){
-        return res.render('login')
-       
+        if (req.session.user != undefined){
+            return res.redirect("/index");
+         } else {
+            return res.render("login")
+         }  
     },
     storeLogin: function(req,res){
         let emailInsertado = req.body.email
