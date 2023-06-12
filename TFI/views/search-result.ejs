@@ -15,19 +15,19 @@
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Resultados de búsqueda</h2>
-				<!-- <h2>mensaje</h2> -->
+				 <h2> <%=dic.mensaje  %></h2> 
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% for( let i = 0; i < productos.length; i++ ) { %>
+			<% for( let i = 0; i < dic.productos.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/detail/<%= productos[i].id %>">
+						<a href="/product/detail/<%= dic.productos[i].id %>">
 							<figure class="product-box_image">
-								<img src="<%= productos[i].foto_producto %>" alt="botin2">
+								<img src="<%= dic.productos[i].foto_producto %>" alt="botin2">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= productos[i].nombre %></h2>
-								<p><%= productos[i].descripcion %></p>
+								<h2><%= dic.productos[i].nombre %></h2>
+								<p><%= dic.productos[i].descripcion %></p>
 								<p>Comentarios: 12</p>
 							</article>
 						</a>

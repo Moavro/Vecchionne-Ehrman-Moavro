@@ -115,7 +115,9 @@ const profileController = {
     },
     logout: function(req,res){
         res.clearCookie("id");
-        return res.render('login');
+        req.session.user = undefined
+        console.log("COOKIES", res.cookies)
+        return res.render('login'); // redirect
        
     },
     

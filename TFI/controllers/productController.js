@@ -8,7 +8,8 @@ const productController = {
 
         let relacion = {
             include: [
-                 {association: "comentarios",include: [{association: "usuario"}]}
+                 {association: "comentarios",include: [{association: "usuario"}]},
+                 { association: "usuario"}
             ]
         }
 

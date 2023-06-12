@@ -4,7 +4,8 @@ const op = db.Sequelize.Op;
 const indexController = {
     index: function(req,res){
         db.Producto.findAll({
-            order: [["fecha_carga", "DESC"]]    
+            order: [["fecha_carga", "DESC"]],
+            include:[ { association: "usuario"}]    
         }) .then((result) => {
             return res.render ("index",{productos: result})
         }).catch((err) => {
@@ -42,16 +43,19 @@ const indexController = {
 
         db.Producto.findAll(filtro) 
         .then((result) => {
-            
-            // console.log(result);
-            // if(result != ''){
-            //     let mensaje = 'Aqui estan los resultados de su busqueda'
-            //     return res.render('search-result', [{productos: result }, mensaje])
-            // } else {
-            //     let mensaje = 'No hay resultados para su busqueda'
-            //     return res.render('search-result', [{productos: result }, mensaje])
-            // }
-            return res.render('search-result', {productos: result })
+             console.log(result);
+             dic = {}
+             dic.productos = result
+             if(result != ''){
+                 let mensaje = 'Aqui estan los resultados de su busqueda'
+                 dic.mensaje = mensaje
+             return res.render('search-result', [/* {productos: result }, mensaje */dic])
+             } else {
+                 let mensaje = 'No hay resultados para su busqueda'
+                 dic.mensaje = mensaje
+                 return res.render('search-result', [/* {productos: result }, mensaje */dic])
+             }
+            /* return res.render('search-result', {productos: result }) */
          }).catch((err) => {
             
         });
