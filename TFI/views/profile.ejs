@@ -9,7 +9,7 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= fotoPerfil %>" alt="foto de perfil" class="foto-perfil">
+				<img src="<%= usuario.foto_perfil %>" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
@@ -22,9 +22,9 @@
 				</div>
 				<div>
 					<ul class="">
-						<li> <%= email %></li>
-						<li><%= documento %></li>
-						<li><%= fechaNacimiento %></li>
+						<li> <%= usuario.email %></li>
+						<li><%= usuario.dni %></li>
+						<li><%= usuario.fecha_nacimiento %></li>
 					</ul>
 				</div>
 			</div>
@@ -39,16 +39,16 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for( let i = 0; i < productos.length; i++ ) { %>
+			<% for( let i = 0; i < usuario.productos.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="product/detail/<%= productos[i].id %>">
+						<a href="product/detail/<%= usuario.productos[i].id %>">
 							<figure class="product-box_image">
-								<img src="/<%= productos[i].imagen %>" alt="botin2">
+								<img src="/<%= usuario.productos[i].foto_producto %>" alt="botin2">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= productos[i].nombreProducto %></h2>
-								<p><%= productos[i].descripcion %></p>
+								<h2><%= usuario.productos[i].nombre %></h2>
+								<p><%= usuario.productos[i].descripcion %></p>
 								<p>Comentarios: 12</p>
 							</article>
 						</a>

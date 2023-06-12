@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const profileController= require('../controllers/profileController')
 /* GET home page. */
-router.get('/', profileController.show);
+router.get('/id/:id', profileController.show);
 
 router.get("/register", profileController.register);
 router.post("/register", profileController.store);

@@ -5,7 +5,23 @@ const bcrypt = require('bcryptjs');
 
 const profileController = {
     show: function(req,res){
-        return res.render('profile', {
+        let filtro = {
+            include: [{association: 'productos'}]
+        }
+        console.log(req.session.user);
+        idUser = req.params.id
+        profile.findByPk(idUser, filtro)
+                .then((result) => {
+                    if (idUser = req.session.user.id) {
+                        return res.render('profile', {usuario: result})     
+                    } else {
+                        return res.render('profile', {usuario: result})
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                });
+           
+    /*     return res.render('profile', {
             email: data.usuario.email,
             usuario: data.usuario,
             fotoPerfil: data.usuario.fotoPerfil,
@@ -15,7 +31,7 @@ const profileController = {
             productos: data.productos
 
         })
-       
+        */
     },
     register: function(req,res){
         if (req.session.user != undefined){
@@ -101,7 +117,8 @@ const profileController = {
                         res.cookie('id', result.dataValues.id, {maxAge: 1000*60*60})
                     }
                     //console.log(req.session.user);
-                    return res.redirect("/profile")
+                    let id = req.session.user.id
+                    return res.redirect(`/profile/id/${id}`)
                 } else {
                     errors.mensaje = "la contraseña es incorrecta"
                     res.locals.errors = errors
