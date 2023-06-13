@@ -37,9 +37,10 @@ const indexController = {
                   { descripcion: { [op.like]: `%${queryString}%` } }
                 ]
               },
-            order: [["fecha_carga", "DESC"]]
-        }
+            order: [["fecha_carga", "DESC"]],
+            include: [{association: "usuario"}]
 
+        }
 
         db.Producto.findAll(filtro) 
         .then((result) => {
