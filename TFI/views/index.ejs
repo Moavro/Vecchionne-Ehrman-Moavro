@@ -32,7 +32,7 @@
 							</figure>
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre %></h2>
-								<p><%= productos[i].usuario.usuario %></p>
+								<p> <a href="/profile/id/<%= productos[i].usuario.id %>"><%= productos[i].usuario.usuario %> </a></p>
 								<p><%= productos[i].descripcion %></p>
 								<p>Comentarios: 12</p>
 							</article>
