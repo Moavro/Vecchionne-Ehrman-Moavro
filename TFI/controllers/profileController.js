@@ -6,7 +6,8 @@ const bcrypt = require('bcryptjs');
 const profileController = {
     show: function(req,res){
         let filtro = {
-            include: [{association: 'productos'}]
+            include: [{association: 'productos'}],
+            order: [["created_at", "DESC"]]
         }
         console.log(req.session.user);
         idUser = req.params.id

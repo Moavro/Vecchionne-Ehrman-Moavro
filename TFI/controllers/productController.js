@@ -28,15 +28,29 @@ const productController = {
         } ) */
        
     productAdd: function(req,res){
-/*                 if (req.session.user != undefined){
-            return res.redirect("/index");
+        if (req.session.user != undefined){
+            return res.render("product-add");
          } else {
             return res.render("login")
-         }  */
-        return res.render('product-add', {
+         }  
+        /* return res.render('product-add', {
             usuario: data.usuario
-        })
+        }) */
+
        
+    },
+    storeProduct:function(req,res){
+        let info = req.body
+        info.usuario_id = req.session.user.id
+        producto.create(info)
+        .then((result) => {
+            return res.redirect("product-add")
+        }).catch((err) => {
+            console.log(err)
+        });
+
+
+        
     } 
 
 }
