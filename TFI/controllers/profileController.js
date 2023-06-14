@@ -13,11 +13,7 @@ const profileController = {
         idUser = req.params.id
         profile.findByPk(idUser, filtro)
                 .then((result) => {
-                    if (idUser = req.session.user.id) {
-                        return res.render('profile', {usuario: result})     
-                    } else {
-                        return res.render('profile', {usuario: result})
-                    }
+                    return res.render('profile', {usuario: result})
                 }).catch((err) => {
                     console.log(err);
                 });

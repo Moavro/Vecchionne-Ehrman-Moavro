@@ -4,7 +4,7 @@ const op = db.Sequelize.Op;
 const indexController = {
     index: function(req,res){
         db.Producto.findAll({
-            order: [["fecha_carga", "DESC"]],
+            order: [["created_at", "DESC"]],
             include:[ { association: "usuario"}]    
         }) .then((result) => {
             return res.render ("index",{productos: result})

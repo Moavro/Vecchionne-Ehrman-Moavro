@@ -2,7 +2,12 @@
 <!-- Include Head -->
 <%- include("./partials/head") %>
 	<!-- Header -->
-	<%- include("./partials/headerLogueado") %>
+	<% if (locals.user != null) { %>
+		<%- include('./partials/headerLogueado') %><% 
+		} else { %>
+			<%- include("./partials/header") %>
+	<% } %>
+	
 	<!-- /Header -->
 
 	<!-- Datos del usuario -->
