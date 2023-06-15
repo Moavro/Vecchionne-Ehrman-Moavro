@@ -42,13 +42,19 @@ const productController = {
       },
     edit: function (req,res) {
         let id = req.params.id
+        let filtro = {
+            include: [{
+              all: true,
+              nested: true
+            }]
+          }; 
 
-        producto.findByPk(id)
+        producto.findByPk(id, filtro)
         .then((result) => {
-            if (req.session.user.id === result.usuario_id){
+            if (req.session.user && req.session.user.id === result.usuario_id){
                 return res.render("product-edit", {productos:result});
              } else  {
-                return res.render("login", {productos:result});
+                return res.render("product", {productos:result});
              }  
         }).catch((err) => {
             console.log("Este es el error de mierda" + err)
