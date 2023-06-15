@@ -13,7 +13,7 @@ const productController = {
             ]
         }
 
-        producto.findByPk(idBuscado, relacion)
+         producto.findByPk(idBuscado, relacion)
             .then((result) => {
                 console.log(result);
                 return res.render('product', {productos: result})
@@ -21,11 +21,6 @@ const productController = {
                 console.log(err)
             }); 
         },
-/*         return res.render('product', {
-            productos: data.productos,
-            comentarios: data.comentarios,
-            id: req.params.id
-        } ) */
        
     productAdd: function(req,res){
         if (req.session.user != undefined){
@@ -33,10 +28,6 @@ const productController = {
          } else {
             return res.render("login")
          }  
-        /* return res.render('product-add', {
-            usuario: data.usuario
-        }) */
-
        
     },
     storeProduct:function(req,res){
@@ -48,10 +39,35 @@ const productController = {
         }).catch((err) => {
             console.log(err)
         });
-
-
+      },
+    edit: function (req,res) {
+        let id = req.params.id
         
-    } 
+        producto.findByPk(id)
+        .then((result) => {
+            if (req.session.user != undefined){
+                return res.render("product-edit", {productos:result});
+             } else {
+                return res.render("login")
+             }  
+        }).catch((err) => {
+            console.log(err)
+        });
+     },
+     storeEdit: function (req,res) {
+        let info = req.body
+        let id = req.params.id
+        filtro = { where :[{id: id}]}
+
+        producto.update(info,filtro)
+        .then((result) => {
+            return res.redirect("products/id/" + id)
+        }).catch((err) => {
+            console.log(err)
+            
+        });
+
+     }
 
 }
 

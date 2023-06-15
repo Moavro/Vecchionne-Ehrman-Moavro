@@ -12,12 +12,6 @@ const indexController = {
             console.log(err)
         });
     },  
-/*         return res.render('index', {
-            usuarios: data.usuario,
-            productos: data.productos,
-            comentados: [data.productos[0], data.productos[1], data.productos[2] ]
-        })
-    }, */
 
     headerLogueado: function(req,res){
         return res.render("headerLogueado", {
@@ -30,7 +24,6 @@ const indexController = {
         console.log(queryString);
 
         let filtro = {
-            //where:[{nombre: {[op.like]:`%${queryString}%`}}],
             where: {
                 [op.or]: [
                   { nombre: { [op.like]: `%${queryString}%` } },
@@ -56,7 +49,6 @@ const indexController = {
                  dic.mensaje = mensaje
                  return res.render('search-result', [dic])
              }
-            /* return res.render('search-result', {productos: result }) */
          }).catch((err) => {
             
         });

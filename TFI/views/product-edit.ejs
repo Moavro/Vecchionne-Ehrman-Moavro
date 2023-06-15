@@ -1,0 +1,35 @@
+<!-- Include Head -->
+<%- include("./partials/head") %>
+	<!-- Header -->
+
+	<%- include("./partials/headerLogueado") %>
+	<!-- /Header -->
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar Producto</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+            <h2 class="col-12"> 
+				<form action="/product/product-add" method="post">
+					<div>
+						<input type="text" name="foto_producto" value="" placeholder="Imagen" required>
+					</div>
+					<div>
+						<input type="text" name="nombre" value="" placeholder="Nombre de producto" required>
+					</div>
+					<div>
+						<input type="text" name="descripcion" value="" placeholder="Descripcion" required>
+					</div>
+					<div>
+						<input type="date" name="fecha_carga" value="" placeholder="Fecha de carga" required>
+					</div>
+					<button type="submit">Enviar</button>				
+				</form>
+			</h2>
+
+	<!-- footer -->
+	<%- include("./partials/footer") %>
+	<!-- /footer -->

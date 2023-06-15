@@ -17,18 +17,6 @@ const profileController = {
                 }).catch((err) => {
                     console.log(err);
                 });
-           
-    /*     return res.render('profile', {
-            email: data.usuario.email,
-            usuario: data.usuario,
-            fotoPerfil: data.usuario.fotoPerfil,
-            documento: data.usuario.documento,
-            fechaNacimiento: data.usuario.fechaNacimiento,
-            usuarios: data.usuario,
-            productos: data.productos
-
-        })
-        */
     },
     register: function(req,res){
         if (req.session.user != undefined){
@@ -98,8 +86,7 @@ const profileController = {
         console.log(req.body);
 
         let filtrado = {
-            where: [{email: emailInsertado}/* ,
-            {clave:claveInsertada} */]
+            where: [{email: emailInsertado}]
         } 
 
         errors = {}
