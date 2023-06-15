@@ -45,10 +45,10 @@ const productController = {
 
         producto.findByPk(id)
         .then((result) => {
-            if (req.session.user.id == producto.usuario_id){
-                return res.redirect("product-edit", {productos:result});
-             } else {
-                return res.render("login")
+            if (req.session.user.id === result.usuario_id){
+                return res.render("product-edit", {productos:result});
+             } else  {
+                return res.render("login", {productos:result});
              }  
         }).catch((err) => {
             console.log("Este es el error de mierda" + err)
