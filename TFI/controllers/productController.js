@@ -57,11 +57,11 @@ const productController = {
      storeEdit: function (req,res) {
         let info = req.body
         let id = req.params.id
-        filtro = { where :[{id: id}]}
+        filtro = { where :[{id : id}]}
 
         producto.update(info,filtro)
         .then((result) => {
-            return res.redirect("products/id/" + id)
+            return res.redirect("/product/detail/" + id)
         }).catch((err) => {
             console.log(err)
             
