@@ -10,7 +10,8 @@ router.post("/register", profileController.store);
 router.get("/login", profileController.login)
 router.post("/login", profileController.storeLogin)
 
-router.get("/profile-edit", profileController.profileEdit)
+router.get("/profile-edit/:id", profileController.profileEdit)
+router.post("/profile-edit/:id", profileController.storeProfile)
 
 router.get("/logout", profileController.logout)
 

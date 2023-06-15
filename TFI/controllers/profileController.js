@@ -66,11 +66,38 @@ const profileController = {
        
        
     },
-    profileEdit: function(req,res){
-        return res.render('profile-edit',{
-            usuario: data.usuario
-        })
-       
+    profileEdit: function (req,res) {
+        let id = req.params.id
+        let filtro = {
+            include: [{
+              all: true,
+              nested: true
+            }]
+          }; 
+
+        profile.findByPk(id, filtro)
+        .then((result) => {
+                if (req.session.user && req.session.user.id == id){
+                    return res.render("profile-edit", {usuario:result});
+                } else  {
+                    return res.render("profile", {usuario:result});
+                }  
+        }).catch((err) => {
+            console.log("Este es el error de mierda" + err)
+        });
+     },
+    storeProfile: function (req,res) {
+        let info = req.body
+        let id = req.params.id
+        filtro = { where :[{id : id}]}
+
+        profile.update(info,filtro)
+        .then((result) => {
+            return res.redirect("/profile/id/" + id)
+        }).catch((err) => {
+            console.log(err)
+            
+        });   
     },
     login: function(req,res){
         if (req.session.user != undefined){
