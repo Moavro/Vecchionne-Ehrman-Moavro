@@ -42,16 +42,16 @@ const productController = {
       },
     edit: function (req,res) {
         let id = req.params.id
-        
+
         producto.findByPk(id)
         .then((result) => {
-            if (req.session.user != undefined){
-                return res.render("product-edit", {productos:result});
+            if (req.session.user.id == producto.usuario_id){
+                return res.redirect("product-edit", {productos:result});
              } else {
                 return res.render("login")
              }  
         }).catch((err) => {
-            console.log(err)
+            console.log("Este es el error de mierda" + err)
         });
      },
      storeEdit: function (req,res) {

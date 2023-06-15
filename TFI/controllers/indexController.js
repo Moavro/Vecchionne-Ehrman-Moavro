@@ -21,7 +21,6 @@ const indexController = {
 
     searchResult: function(req,res){
         let queryString = req.query.search;
-        console.log(queryString);
 
         let filtro = {
             where: {
@@ -37,7 +36,6 @@ const indexController = {
 
         db.Producto.findAll(filtro) 
         .then((result) => {
-             console.log(result);
              dic = {}
              dic.productos = result
              if(result != ''){

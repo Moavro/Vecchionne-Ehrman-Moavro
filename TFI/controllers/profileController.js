@@ -9,7 +9,6 @@ const profileController = {
             include: [{association: 'productos'}],
             order: [["created_at", "DESC"]]
         }
-        console.log(req.session.user);
         idUser = req.params.id
         profile.findByPk(idUser, filtro)
                 .then((result) => {
@@ -83,7 +82,6 @@ const profileController = {
     storeLogin: function(req,res){
         let emailInsertado = req.body.email
         let claveInsertada = req.body.clave
-        console.log(req.body);
 
         let filtrado = {
             where: [{email: emailInsertado}]
@@ -123,7 +121,6 @@ const profileController = {
     logout: function(req,res){
         res.clearCookie("id");
         req.session.user = undefined
-        console.log("COOKIES", res.cookies)
         return res.render('login'); // redirect
        
     },
