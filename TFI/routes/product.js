@@ -10,5 +10,6 @@ router.post("/product-add", productController.storeProduct)
 router.get("/edit/:id", productController.edit);
 router.post("/edit/:id", productController.storeEdit); 
 
+router.post("/detail/:id", productController.storeComentario)
 
 module.exports = router
