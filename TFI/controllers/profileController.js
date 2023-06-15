@@ -89,15 +89,17 @@ const profileController = {
     storeProfile: function (req,res) {
         let info = req.body
         let id = req.params.id
+        info.clave = bcrypt.hashSync(info.clave, 10)
         filtro = { where :[{id : id}]}
 
         profile.update(info,filtro)
         .then((result) => {
             return res.redirect("/profile/id/" + id)
         }).catch((err) => {
-            console.log(err)
+            console.log("MIERDA DE ERROR" + err)
             
         });   
+        
     },
     login: function(req,res){
         if (req.session.user != undefined){
