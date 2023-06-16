@@ -3,10 +3,15 @@ const op = db.Sequelize.Op;
 
 const indexController = {
     index: function(req,res){
-        db.Producto.findAll({
+        let filtro = {
+            include: [{
+              all: true,
+              nested: true
+            }],
             order: [["created_at", "DESC"]],
-            include:[ { association: "usuario"}]    
-        }) .then((result) => {
+          }; 
+        db.Producto.findAll(filtro) 
+        .then((result) => {
             return res.render ("index",{productos: result})
         }).catch((err) => {
             console.log(err)

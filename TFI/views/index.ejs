@@ -31,10 +31,10 @@
 								<img src="<%= productos[i].foto_producto %>" alt="botin2">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= productos[i].nombre %></h2>
-								<p> <a href="/profile/id/<%= productos[i].usuario.id %>"><%= productos[i].usuario.usuario %> </a></p>
-								<p><%= productos[i].descripcion %></p>
-								<p>Comentarios: 12</p>
+								<h2> <%= productos[i].nombre %></h2>
+								<p> <a href="/profile/id/<%= productos[i].usuario.id %>"> By: <%= productos[i].usuario.usuario %> </a></p>
+								<p>Descripcion: <%= productos[i].descripcion %></p>
+								<p>Comentarios: <%= productos[i].comentarios.length %></p>
 							</article>
 						</a>
 					</section>
@@ -58,8 +58,9 @@
 							</figure>
 							<article class="product-box_data">
 								<h2><%= productos[i].nombre %></h2>
-								<p><%= productos[i].descripcion %></p>
-								<p>Comentarios: 12</p>
+								<p> <a href="/profile/id/<%= productos[i].usuario.id %>"> By: <%= productos[i].usuario.usuario %> </a></p>
+								<p>Descripcion: <%= productos[i].descripcion %></p>
+								<p>Comentarios: <%= productos[i].comentarios.length %></p>
 							</article>
 						</a>
 					</section>

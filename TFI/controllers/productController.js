@@ -75,25 +75,36 @@ const productController = {
         });
 
      },
-    storeComentario: function(req,res){
-        
-        
+    storeComentario: function(req,res){   
         if (req.session.user != undefined) {
             
             let data = req.body
             data.usuario_id = req.session.user.id
             data.producto_id = req.params.id
-            comentario.create(data)
-            .then((result) => {
-                return res.redirect(`/product/detail/${data.producto_id}`)
-            }).catch((err) => {
-                console.log(err)
-            });
+            if (data.comentario != "") {
+                    comentario.create(data)
+                        .then((result) => {
+                            return res.redirect(`/product/detail/${data.producto_id}`)  
+                        }).catch((err) => {
+                            console.log(err)
+                        });
+            } else {
+                let relacion = {
+                    include: [
+                         {association: "comentarios", include: [{association: "usuario"}]},
+                         { association: "usuario"}
+                    ], 
+                    order: [["created_at", "DESC"]]
+                }
         
-        } else{
-            return res.redirect("/profile/login")
-        }
-        
+                 producto.findByPk(data.producto_id, relacion)
+                    .then((result) => {
+                        return res.render('product', {productos: result})
+                    }).catch((err) => {
+                        console.log(err)
+                    }); 
+                }
+        } 
     }
 
 }
