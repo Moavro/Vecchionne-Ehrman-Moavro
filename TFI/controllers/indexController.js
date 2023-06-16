@@ -35,8 +35,10 @@ const indexController = {
                 ]
               },
             order: [["fecha_carga", "DESC"]],
-            include: [{association: "usuario"}]
-
+            include: [{
+                all: true,
+                nested: true
+              }],     
         }
 
         db.Producto.findAll(filtro) 

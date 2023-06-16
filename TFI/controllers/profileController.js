@@ -7,7 +7,10 @@ const profileController = {
     show: function (req, res) {
         let filtro = {
             include: [{ association: 'productos' }],
-            order: [["created_at", "DESC"]]
+            include: [{
+                all: true,
+                nested: true
+              }],
         }
         idUser = req.params.id
         profile.findByPk(idUser, filtro)

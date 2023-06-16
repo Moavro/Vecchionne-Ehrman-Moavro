@@ -28,8 +28,8 @@
 							<article class="product-box_data">
 								<h2><%= dic.productos[i].nombre %></h2>
 								<p><a href="/profile/id/<%= dic.productos[i].usuario.id %>"> By:<%= dic.productos[i].usuario.usuario %></a> </p>
-								<p><%= dic.productos[i].descripcion %></p>
-								<p>Comentarios: 12</p>
+								<p>Descripcion: <%= dic.productos[i].descripcion %></p>
+								<p>Comentarios: <%= dic.productos[i].comentarios.length %></p>
 							</article>
 						</a>
 					</section>
