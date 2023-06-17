@@ -103,6 +103,7 @@ const profileController = {
                                 info.clave = bcrypt.hashSync(info.clave, 10)
                                 profile.update(info, filtro)
                                 .then((result) => {
+                                    req.session.user.usuario = info.usuario
                                     return res.redirect("/profile/id/" + id)
                                 }).catch((err) => {
                                     console.log(err)
@@ -116,6 +117,7 @@ const profileController = {
                                     foto_perfil: req.body.foto_perfil
                                 }, filtro)
                                 .then((result) => {
+                                    req.session.user.usuario = info.usuario
                                     return res.redirect("/profile/id/" + id)
                                 }).catch((err) => {
                                     console.log(err)
